@@ -1,4 +1,4 @@
-package com.example.offenseapp.ui.root
+package com.example.offenseapp.ui.mainscreen
 
 import android.os.Handler
 import android.os.Looper
