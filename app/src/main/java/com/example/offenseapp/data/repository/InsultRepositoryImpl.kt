@@ -8,7 +8,7 @@ import com.example.offenseapp.util.Resource
 
 class InsultRepositoryImpl(private val client: RetrofitNetworkClient) : InsultRepository {
     override fun loadInsult(): Resource<InsultStructure> {
-        val unknownStruct = client.doRequest("")
+        val unknownStruct = client.doRequest("ru")
         return when (unknownStruct.serverResponseCode) {
             -1 -> Resource.Error(unknownStruct.serverResponseCode)
             200 -> Resource.Success(InsultStructure((unknownStruct as InsultLoadResponse).insult))

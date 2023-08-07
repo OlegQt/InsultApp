@@ -6,6 +6,7 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 class RetrofitNetworkClient : NetworkClient {
     override fun doRequest(params: Any): NetworkResponse {
@@ -16,7 +17,7 @@ class RetrofitNetworkClient : NetworkClient {
 
         val service = retrofit.create(InsultApi::class.java)
 
-        val response = service.getOffence().execute()
+        val response = service.getOffence("ru").execute()
         val body = response.body()
 
         if (body != null) return body.apply { serverResponseCode = response.code() }
@@ -26,5 +27,5 @@ class RetrofitNetworkClient : NetworkClient {
 
 interface InsultApi {
     @GET("/generate_insult.php?type=json")
-    fun getOffence(): Call<InsultLoadResponse>
+    fun getOffence(@Query("lang") lang:String): Call<InsultLoadResponse>
 }
