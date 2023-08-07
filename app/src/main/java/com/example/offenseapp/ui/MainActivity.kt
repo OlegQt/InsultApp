@@ -1,16 +1,16 @@
-package com.example.offenseapp
+package com.example.offenseapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.widget.Button
 import android.widget.TextView
+import com.example.offenseapp.R
 import com.example.offenseapp.data.repository.InsultRepositoryImpl
 import com.example.offenseapp.data.network.RetrofitNetworkClient
 import com.example.offenseapp.domain.usecase.LoadInsultUseCase
+import com.example.offenseapp.ui.root.RootFragment
 import com.example.offenseapp.util.Resource
-import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
     private val handler = Handler(Looper.getMainLooper())
@@ -23,10 +23,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        txt = findViewById<TextView>(R.id.insult_text)
 
+        if(savedInstanceState==null){
+            supportFragmentManager.beginTransaction().add(R.id.fragmentHolder, RootFragment.newInstance()).commit()
+        }
+
+
+        /*txt = findViewById<TextView>(R.id.insult_text)
         val btn = findViewById<Button>(R.id.btn_action)
-        btn.setOnClickListener { loadNewInsult() }
+        btn.setOnClickListener { loadNewInsult() }*/
+
     }
 
     private fun loadNewInsult() {
