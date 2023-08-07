@@ -1,6 +1,7 @@
-package com.example.offenseapp.data
+package com.example.offenseapp.data.network
 
-import com.example.offenseapp.domain.model.InsultStructure
+import com.example.offenseapp.data.dto.NetworkResponse
+import com.example.offenseapp.data.dto.InsultLoadResponse
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -14,17 +15,16 @@ class RetrofitNetworkClient : NetworkClient {
             .build()
 
         val service = retrofit.create(InsultApi::class.java)
+
         val response = service.getOffence().execute()
         val body = response.body()
 
-        return NetworkDataResponse<InsultStructure>().apply {
-            if (body != null) this.dataResponse = body
-            this.serverResponseCode = response.code()
-        }
+        if (body != null) return body.apply { serverResponseCode = response.code() }
+        else return NetworkResponse().apply { serverResponseCode = response.code() }
     }
 }
 
 interface InsultApi {
     @GET("/generate_insult.php?type=json")
-    fun getOffence(): Call<InsultStructure>
+    fun getOffence(): Call<InsultLoadResponse>
 }
