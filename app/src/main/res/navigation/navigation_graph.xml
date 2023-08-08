@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/rootFragment">
+
+    <fragment
+        android:id="@+id/rootFragment"
+        android:name="com.example.offenseapp.ui.mainscreen.RootFragment"
+        android:label="fragment_root"
+        tools:layout="@layout/fragment_root" >
+        <action
+            android:id="@+id/action_rootFragment3_to_insultListFragment2"
+            app:destination="@id/insultListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/insultListFragment"
+        android:name="com.example.offenseapp.ui.insultscreen.InsultListFragment"
+        android:label="fragment_insult_list"
+        tools:layout="@layout/fragment_insult_list" />
+</navigation>

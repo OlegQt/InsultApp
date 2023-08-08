@@ -6,26 +6,17 @@
     android:layout_height="match_parent"
     android:paddingHorizontal="4dp"
     android:orientation="vertical"
-    tools:context="com.example.offenseapp.ui.mainscreen.RootFragment">
+    tools:context="com.example.offenseapp.ui.insultscreen.InsultListFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:id="@+id/insult_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="26sp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp"
-        android:text="@string/hello_blank_fragment" />
+        android:text="InsultList" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/load_insult"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:textAllCaps="true"
-        android:text="Оскорбление"/>
 
 
 </LinearLayout>
