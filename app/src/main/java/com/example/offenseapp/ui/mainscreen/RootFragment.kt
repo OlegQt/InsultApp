@@ -7,20 +7,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.example.offenseapp.R
 import com.example.offenseapp.databinding.FragmentRootBinding
+import com.example.offenseapp.ui.insultscreen.InsultListFragment
 
 class RootFragment : Fragment() {
-    private var binding:FragmentRootBinding? = null
-    private lateinit var vm:RootFragmentVm
+    private var binding: FragmentRootBinding? = null
+    private lateinit var vm: RootFragmentVm
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentRootBinding.inflate(inflater,container,false)
-        vm = ViewModelProvider(this)[ RootFragmentVm()::class.java]
+        binding = FragmentRootBinding.inflate(inflater, container, false)
+        vm = ViewModelProvider(this)[RootFragmentVm()::class.java]
 
-        vm.insultText.observe(viewLifecycleOwner){
+        vm.insultText.observe(viewLifecycleOwner) {
             binding?.insultText?.text = it
         }
 
@@ -31,6 +34,13 @@ class RootFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding?.loadInsult?.setOnClickListener {
             vm.loadNewInsult()
+        }
+
+        binding?.buttonNavigateToList?.setOnClickListener {
+            findNavController().navigate(
+                R.id.action_rootFragment_to_insultListFragment,
+                Bundle().apply { putString(InsultListFragment.ARG_KEY, binding?.insultText?.text.toString()) }
+            )
         }
     }
 

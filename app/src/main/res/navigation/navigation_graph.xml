@@ -11,7 +11,7 @@
         android:label="fragment_root"
         tools:layout="@layout/fragment_root" >
         <action
-            android:id="@+id/action_rootFragment3_to_insultListFragment2"
+            android:id="@+id/action_rootFragment_to_insultListFragment"
             app:destination="@id/insultListFragment" />
     </fragment>
     <fragment

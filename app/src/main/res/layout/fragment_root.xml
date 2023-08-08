@@ -27,5 +27,14 @@
         android:textAllCaps="true"
         android:text="Оскорбление"/>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_navigate_to_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:textAllCaps="true"
+        android:text="Open List" />
+
 
 </LinearLayout>

@@ -18,9 +18,14 @@ class InsultListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentInsultListBinding.inflate(inflater,container,false)
-
         return binding?.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val data = requireArguments().getString(ARG_KEY)
+        binding?.txtInsultLst?.text = data
     }
 
     override fun onDestroy() {
@@ -29,6 +34,7 @@ class InsultListFragment : Fragment() {
     }
 
     companion object {
+        const val ARG_KEY = "arg_key"
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance() = InsultListFragment()

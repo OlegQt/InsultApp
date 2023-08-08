@@ -16,10 +16,10 @@ class MainActivity : AppCompatActivity() {
 
         if(savedInstanceState==null){
             //supportFragmentManager.beginTransaction().add(R.id.fragmentHolder, RootFragment.newInstance()).commit()
-            supportFragmentManager.commit {
+/*            supportFragmentManager.commit {
                 replace(R.id.fragmentHolder,RootFragment.newInstance())
                 addToBackStack(null)
-            }
+            }*/
         }
 
     }
